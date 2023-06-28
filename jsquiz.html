@@ -71,23 +71,6 @@
     </main>
   </body>
   <script type="text/javascript">
-    // Toggle the text of the "true" button when clicked from capitalized to lowercase 
-    const buttonTrue = document.querySelector("#options").children[0];
-    buttonTrue.addEventListener("click", () => {
-      buttonTrue.textContent = buttonTrue.textContent.toUpperCase();
-    });
-
-    // Change the h1 text to "hovering!" when the mouse is over it
-    const hovering = document.querySelector("header h1");
-    hovering.addEventListener("mouseover", () => {
-      hovering.textContent = "hovering!";
-    });
-
-    // Change the h1 text back to "Quiz.js" when the mouse leaves it
-    hovering.addEventListener("mouseout", () => {
-      hovering.textContent = "Quiz.js";
-    });
-
     // TODO 1: Declare & assign variables pointing to the corresponding element(s)
     // statement should be the "statement" div
     const statement = document.getElementById("statement");
@@ -103,7 +86,7 @@
     const fact = {
       statement: "JavaScript is a programming language",
       answer: true,
-      explanation: "JavaScript is a programming language",
+      explanation: "JavaScript is an object-oriented programming language",
     };
 
     // TODO 3: Set the text of the statement element to the fact's statement
@@ -122,17 +105,29 @@
 
     // TODO 5: Declare an isCorrect function that compares a guess to the right answer
     // isCorrect(guess) should return true if the guess matches the fact's answer
-    const isCorrect = (guess) => guess === fact.answer;
+    const isCorrect = (guess) => guess === fact.answer.toString();
 
     // TODO 6A: Use a for loop to add a click event listener to each of the optionButtons
-    // TODO 6B: Within the event handler function, display the fact's explanation by setting the text of the explanation element
+    for (let button of optionButtons) {
+      button.addEventListener("click", () => {
+        // TODO 6B: Within the event handler function, display the fact's explanation by setting the text of the explanation element
+        explanation.textContent = fact.explanation;
 
-    // TODO 7: Within the event handler function,
-    // Use a for loop to disable all the option buttons
+        // TODO 7: Within the event handler function,
+        // Use a for loop to disable all the option buttons
+        for (let button of optionButtons) {
+          disable(button);
+        }
 
-    // TODO 8: Within the event handler function,
-    // Get the guessed value from the clicked button
-    // Use a conditional to compare the guess to the fact's answer
-    // and add the "correct"/"incorrect" class as appropriate
+        // TODO 8: Within the event handler function,
+        // Get the guessed value from the clicked button
+        // Use a conditional to compare the guess to the fact's answer
+        // and add the "correct"/"incorrect" class as appropriate
+        const guess = button.value;
+        isCorrect(guess)
+          ? button.classList.add("correct")
+          : button.classList.add("incorrect");
+      });
+    }
   </script>
 </html>
