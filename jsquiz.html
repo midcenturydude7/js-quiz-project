@@ -71,6 +71,23 @@
     </main>
   </body>
   <script type="text/javascript">
+    // Toggle the text of the "true" button when clicked from capitalized to lowercase 
+    const buttonTrue = document.querySelector("#options").children[0];
+    buttonTrue.addEventListener("click", () => {
+      buttonTrue.textContent = buttonTrue.textContent.toUpperCase();
+    });
+
+    // Change the h1 text to "hovering!" when the mouse is over it
+    const hovering = document.querySelector("header h1");
+    hovering.addEventListener("mouseover", () => {
+      hovering.textContent = "hovering!";
+    });
+
+    // Change the h1 text back to "Quiz.js" when the mouse leaves it
+    hovering.addEventListener("mouseout", () => {
+      hovering.textContent = "Quiz.js";
+    });
+
     // TODO 1: Declare & assign variables pointing to the corresponding element(s)
     // statement should be the "statement" div
     const statement = document.getElementById("statement");
