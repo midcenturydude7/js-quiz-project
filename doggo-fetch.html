@@ -272,12 +272,12 @@
       // Event handler function to compare the clicked button's value to correctAnswer
       // and add "correct"/"incorrect" classes to the buttons as appropriate
       function buttonHandler(e) {
-        if (e.target.value === correctChoice) {
+        if (e.target.value === correctAnswer) {
           e.target.classList.add("correct");
         } else {
           e.target.classList.add("incorrect");
           document
-            .querySelector(`button[value="${correctChoice}"]`)
+            .querySelector(`button[value="${correctAnswer}"]`)
             .classList.add("correct");
         }
       }
