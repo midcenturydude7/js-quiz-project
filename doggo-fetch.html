@@ -238,7 +238,7 @@
       choices.push(correctAnswer);
       while (choices.length < n) {
         const candidate = getRandomElement(possibleChoices);
-        if (choices.includes(candidate)) {
+        if (!choices.includes(candidate)) {
           choices.push(candidate);
         }
       }
